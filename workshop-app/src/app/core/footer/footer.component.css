@@ -1,0 +1,17 @@
+footer {
+    background: rgb(0, 212, 255);
+    ;
+    margin-top: 1em;
+    width: 100vw;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+footer span {
+    font-size: 1.5em;
+}

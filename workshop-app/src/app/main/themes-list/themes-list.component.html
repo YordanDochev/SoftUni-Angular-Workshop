@@ -1,0 +1,7 @@
+<main>
+    <h2 class="title">Actual Themes</h2>
+    <div>
+        <app-loader *ngIf="!isLoaded" />
+        <app-theme-item *ngFor="let theme of themes" [theme]="theme" />
+    </div>
+</main>
