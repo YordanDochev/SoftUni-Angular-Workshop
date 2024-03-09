@@ -8,6 +8,8 @@ import { PostsListComponent } from './main/posts-list/posts-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddThemeComponent } from './add-theme/add-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
+import { ContentRoutingModule } from './content-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { CurrentThemeComponent } from './current-theme/current-theme.component';
     AddThemeComponent,
     CurrentThemeComponent,
   ],
-  imports: [CommonModule,SharedModule],
+  imports: [CommonModule, SharedModule, ContentRoutingModule,RouterModule],
   exports: [
     MainComponent,
     ThemesListComponent,
