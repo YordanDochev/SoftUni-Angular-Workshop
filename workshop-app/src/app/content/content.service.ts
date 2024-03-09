@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Theme } from './types/theme';
-import { Post } from './types/post';
+import { Post } from '../types/post';
+import { Theme } from '../types/theme';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ContentService {
+
+
   constructor(private http:HttpClient) { 
     
   }

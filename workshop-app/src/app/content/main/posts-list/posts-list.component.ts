@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
 import { Post } from 'src/app/types/post';
+import { ContentService } from '../../content.service';
 
 @Component({
   selector: 'app-posts-list',
@@ -10,7 +10,7 @@ import { Post } from 'src/app/types/post';
 export class PostsListComponent implements OnInit {
   posts: Post[] = [];
   isLoaded: boolean = false;
-  constructor(private api: ApiService) {}
+  constructor(private api: ContentService) {}
   ngOnInit(): void {
     this.api.getPosts(5).subscribe((data) => (this.posts = data));
 
