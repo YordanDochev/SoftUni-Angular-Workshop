@@ -1,5 +1,5 @@
 <main>
-    <app-welcome />
+    <app-welcome *ngIf="!isLoggedIn" />
     <h2 class="title">Actual Themes</h2>
     <div>
         <app-loader *ngIf="!isLoaded" />

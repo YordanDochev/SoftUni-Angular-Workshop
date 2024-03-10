@@ -5,29 +5,34 @@ import { Post } from '../types/post';
 import { Theme } from '../types/theme';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContentService {
+  constructor(private http: HttpClient) {}
 
-
-  constructor(private http:HttpClient) { 
-    
-  }
-  
-  getPosts(limit?:number){
-    let {api} = environment
-    if(limit){
-      api += `/posts?limit=${limit}`
-    }else{
+  getPosts(limit?: number) {
+    let { api } = environment;
+    if (limit) {
+      api += `/posts?limit=${limit}`;
+    } else {
       api += '/posts';
-
     }
 
-    return this.http.get<Post[]>(api)
+    return this.http.get<Post[]>(api);
   }
 
-  getThemes(){
-    const {api} = environment
-    return this.http.get<Theme[]>(`${api}/themes`)
+  getThemes() {
+    const { api } = environment;
+    return this.http.get<Theme[]>(`${api}/themes`);
+  }
+
+  getTheme(id: string) {
+    const { api } = environment;
+    return this.http.get<Theme>(`${api}/themes/${id}`);
+  }
+
+  createTheme(themeName: string, postText: string) {
+    const { api } = environment;
+    return this.http.post<Theme>(`${api}/themes`, { themeName, postText });
   }
 }

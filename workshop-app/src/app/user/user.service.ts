@@ -23,17 +23,18 @@ export class UserService {
 
   login() {
     this.user = {
+      id: '5fa64a072183ce1728ff3719',
       firstName: 'Yordan',
-      email:'yordan@gmail.com',
-      password:'123456',
-      phoneNumber: '123-123-321-412'
+      email: 'yordan@gmail.com',
+      password: '123456',
+      phoneNumber: '123-123-321-412',
     };
 
-    localStorage.setItem(this.USER_KEY,JSON.stringify(this.user))
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   logout() {
     this.user = undefined;
-    localStorage.removeItem(this.USER_KEY)
+    localStorage.removeItem(this.USER_KEY);
   }
 }
