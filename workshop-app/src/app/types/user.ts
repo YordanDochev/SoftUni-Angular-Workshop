@@ -18,3 +18,9 @@ export interface UserForAuth{
   password:string,
   id:string
 }
+
+export interface UserProfileDetails{
+  firstName:string | undefined,
+  email:string | undefined,
+  phoneNumber:string | undefined,
+}

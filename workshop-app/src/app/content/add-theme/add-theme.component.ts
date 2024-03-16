@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContentService } from '../content.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-theme',
@@ -12,5 +13,13 @@ export class AddThemeComponent {
   addTheme(ev: Event, themeName: string, themeDescription: string) {
     ev.preventDefault();
     this.contentService.createTheme(themeName, themeDescription);
+  }
+
+  submitFormHandler(form:NgForm){
+    if(form.invalid){
+      return;
+    }
+    console.log(form.value);
+    
   }
 }

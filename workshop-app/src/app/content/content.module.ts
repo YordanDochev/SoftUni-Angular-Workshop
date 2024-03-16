@@ -10,6 +10,7 @@ import { AddThemeComponent } from './add-theme/add-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { ContentRoutingModule } from './content-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     AddThemeComponent,
     CurrentThemeComponent,
   ],
-  imports: [CommonModule, SharedModule, ContentRoutingModule,RouterModule],
+  imports: [CommonModule, SharedModule, ContentRoutingModule,RouterModule,FormsModule],
   exports: [
     MainComponent,
     ThemesListComponent,
