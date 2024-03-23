@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserProfileDetails } from 'src/app/types/user';
 import { UserService } from '../user.service';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -10,41 +10,56 @@ import { EMAIL_DOMAINS } from 'src/app/constants';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   // user: UserProfileDetails | undefined;
   showEditMode: boolean = false;
-  profileDetails: UserProfileDetails | undefined;
+
+  profileDetails: UserProfileDetails = {
+    username: '',
+    email: '',
+    tel: '',
+  };
 
   form = this.fb.group({
-    firstName: ['', [Validators.required, Validators.minLength(5)]],
+    username: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
-    phoneNumber: [''],
+    tel: [''],
   });
-  constructor(private userService: UserService, private fb: FormBuilder) {
-    this.profileDetails = this.userService.user;
-  }
+  constructor(private userService: UserService, private fb: FormBuilder) {}
+  ngOnInit(): void {
+    const { username, tel, email } = this.userService.user!;
 
+    this.profileDetails = {
+      username,
+      email,
+      tel,
+    };
+
+    this.form.setValue({
+      username,
+      email,
+      tel,
+    });
+  }
   onEditClick(): void {
     this.showEditMode = !this.showEditMode;
-    // this.profileDetails = {
-    //   firstName: this.user?.firstName,
-    //   email: this.user?.email,
-    //   phoneNumber: this.user?.phoneNumber,
-    // };
   }
 
   saveProfileHandle(): void {
     if (this.form.invalid) {
       return;
     }
-
     this.profileDetails = this.form.value as UserProfileDetails;
-    this.showEditMode = !this.showEditMode;
+
+    const { username, email, tel } = this.profileDetails;
+
+    this.userService.updateProfile(username!, email!, tel).subscribe(() => {
+      this.onEditClick();
+    });
   }
 
   onCancelClick(e: Event): void {
     e.preventDefault();
     this.showEditMode = !this.showEditMode;
-    
   }
 }

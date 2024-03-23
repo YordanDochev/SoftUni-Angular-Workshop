@@ -12,15 +12,15 @@ export interface User {
 }
 
 export interface UserForAuth{
-  firstName:string,
+  username:string,
   email:string,
-  phoneNumber:string,
+  tel:string,
   password:string,
   id:string
 }
 
 export interface UserProfileDetails{
-  firstName:string | undefined,
+  username:string | undefined,
   email:string | undefined,
-  phoneNumber:string | undefined,
+  tel:string | undefined,
 }

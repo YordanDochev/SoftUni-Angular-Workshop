@@ -32,7 +32,6 @@ export class ContentService {
   }
 
   createTheme(themeName: string, postText: string) {
-    const { api } = environment;
-    return this.http.post<Theme>(`${api}/themes`, { themeName, postText });
+    return this.http.post<Theme>(`/api/themes`, { themeName, postText });
   }
 }

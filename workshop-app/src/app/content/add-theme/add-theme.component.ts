@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ContentService } from '../content.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-theme',
@@ -8,18 +9,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-theme.component.css'],
 })
 export class AddThemeComponent {
-  constructor(private contentService: ContentService) {}
+  constructor(private contentService: ContentService,private router:Router) {}
 
-  addTheme(ev: Event, themeName: string, themeDescription: string) {
-    ev.preventDefault();
-    this.contentService.createTheme(themeName, themeDescription);
-  }
-
-  submitFormHandler(form:NgForm){
-    if(form.invalid){
+  submitFormHandler(form: NgForm) {
+    if (form.invalid) {
       return;
     }
-    console.log(form.value);
+
+    const { themeName, postText } = form.value;
+    console.log(themeName, postText);
     
+    this.contentService.createTheme(themeName, postText).subscribe(() => {
+      this.router.navigate(['/theme'])
+    });
   }
 }

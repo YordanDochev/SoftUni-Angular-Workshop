@@ -5,7 +5,7 @@
 
             <div class="flex">
                 <p>Username: </p>
-                <p>{{profileDetails?.firstName}}</p>
+                <p>{{profileDetails?.username}}</p>
             </div>
             <div class="flex">
                 <p>Email: </p>
@@ -13,7 +13,7 @@
             </div>
             <div class="flex">
                 <p>Phone: </p>
-                <p>{{profileDetails?.phoneNumber}}</p>
+                <p>{{profileDetails?.tel}}</p>
             </div>
             <button class="edit-button" (click)="onEditClick()">Edit</button>
         </ng-container>
@@ -21,7 +21,7 @@
             <form [formGroup]="form" (ngSubmit)="saveProfileHandle()">
                 <div class="flex">
                     <p>Username: </p>
-                    <input type="text" name="username" id="username" [value]="profileDetails?.firstName" formControlName="firstName">
+                    <input type="text" name="username" id="username" [value]="profileDetails?.username" formControlName="username">
                 </div>
                 <div class="flex">
                     <p>Email: </p>
@@ -33,7 +33,7 @@
                         <select name="select-tel" id="select-tel" class="tel">
                             <option value="00359">+359</option>
                         </select>
-                        <input type="text" name="tel" id="tel" [value]="profileDetails?.phoneNumber" formControlName="phoneNumber">
+                        <input type="text" name="tel" id="tel" [value]="profileDetails?.tel" formControlName="tel">
                     </div>
                 </div>
                 <button class="red-button" (click)="onCancelClick($event)">Cancel</button>

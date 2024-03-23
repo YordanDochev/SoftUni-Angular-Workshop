@@ -11,6 +11,8 @@ function getThemes(req, res, next) {
 function getTheme(req, res, next) {
     const { themeId } = req.params;
 
+    
+
     themeModel.findById(themeId)
         .populate({
             path : 'posts',
@@ -25,7 +27,7 @@ function getTheme(req, res, next) {
 function createTheme(req, res, next) {
     const { themeName, postText } = req.body;
     const { _id: userId } = req.user;
-
+    
     themeModel.create({ themeName, userId, subscribers: [userId] })
         .then(theme => {
             newPost(postText, userId, theme._id)
