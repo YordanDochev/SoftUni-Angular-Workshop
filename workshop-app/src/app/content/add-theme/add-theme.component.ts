@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ContentService } from '../content.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-add-theme',
@@ -10,10 +9,7 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./add-theme.component.css'],
 })
 export class AddThemeComponent {
-  constructor(private contentService: ContentService,private router:Router,private userService:UserService) {
-    userService.user$.subscribe((data) => console.log(data));
-
-  }
+  constructor(private contentService: ContentService,private router:Router) {}
 
   submitFormHandler(form: NgForm) {
     if (form.invalid) {
