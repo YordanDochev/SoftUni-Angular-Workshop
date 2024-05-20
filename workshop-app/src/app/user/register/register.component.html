@@ -71,8 +71,7 @@
                     </p> -->
                     <p class="error"
                         *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']">
-                        Repeat Password
-                        does not match password!</p>
+                        Password does not match password!</p>
                 </ng-container>
             </ng-container>
 
